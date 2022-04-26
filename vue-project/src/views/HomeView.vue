@@ -1,9 +1,18 @@
-<script setup>
-// import TheWelcome from '@/components/TheWelcome.vue'
+<script>
+import MyButton from "./MyButton.vue";
+import MyInput from "./MyInput.vue";
+
+export default {
+  components: {
+    MyButton,
+    MyInput,
+  },
+};
 </script>
 
 <template>
   <main>
-  <h1>This is the home page</h1>
+    <my-input name="Username" />
+    <my-button background="darkSlateblue" color="white" value="Submit" />
   </main>
 </template>
