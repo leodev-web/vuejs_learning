@@ -7,12 +7,36 @@ export default {
     MyButton,
     MyInput,
   },
+
+  data() {
+    return {
+      username: {
+        value: "",
+      },
+    };
+  },
+
+  methods: {
+    update(payload) {
+      this[payload.name] = {
+        value: payload.value,
+      };
+    },
+    submit() {
+      console.log("Submit", this.username.value);
+    },
+  },
 };
 </script>
 
 <template>
   <main>
-    <my-input name="Username" />
-    <my-button background="darkSlateblue" color="white" value="Submit" />
+    <my-input name="Username" @update="update" :value="username.value" />
+    <my-button
+      background="darkSlateblue"
+      color="white"
+      value="Submit"
+      @clicked="submit"
+    />
   </main>
 </template>

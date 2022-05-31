@@ -1,7 +1,7 @@
 <template>
   <div class="label">
     <label v-bind:for="name">Username:</label>
-    <input v-bind:id="name" />
+    <input v-bind:id="name" :value="value" @input="input" />
   </div>
 </template>
 <script>
@@ -10,6 +10,19 @@ export default {
     name: {
       type: String,
       required: true,
+    },
+    value: {
+      type: String,
+      required: true,
+    },
+  },
+
+  methods: {
+    input($event) {
+      this.$emit("update", {
+        name: this.name.toLowerCase(),
+        value: $event.target.value,
+      });
     },
   },
 };
